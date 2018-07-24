@@ -19,6 +19,19 @@ class User extends Authenticatable
     ];
 
     /**
+     *
+     */
+    public function departments()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

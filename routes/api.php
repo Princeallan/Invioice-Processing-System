@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/departments', 'DepartmentsController@index')->name('view.departments');
+
+Route::get('/departments/create', 'DepartmentsController@create')->name('create.department');
+
+Route::post('/departments/save', 'DepartmentsController@store');
