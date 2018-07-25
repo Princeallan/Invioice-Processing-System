@@ -17,79 +17,94 @@
 <body>
 <div class="app-dashboard shrink-medium" id="app">
 
-<div class="row expanded app-dashboard-top-nav-bar">
-    <div class="columns medium-6">
-        <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-        <a class="app-dashboard-logo">INVOICING SYSTEM</a>
-    </div>
-    <div class="columns medium-5">
-        <div class="app-dashboard-search-bar-container">
-            <input class="app-dashboard-search" type="search" placeholder="Search">
-            <i class="app-dashboard-search-icon fa fa-search"></i>
+    <div class="row expanded app-dashboard-top-nav-bar">
+        <div class="columns medium-6">
+            <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+            <a class="app-dashboard-logo hide-for-small-only">INVOICING SYSTEM</a>
         </div>
-    </div>
-
-    <div class="columns medium-1">
-    <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-            {{--<a href="#">{{ Auth::user()->name }}</a>--}}
-            <ul class="menu">
-                <li>
-                    <a href="{{ route('logout') }}"
-                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-            </ul>
-        </li>
-    </ul></div>
-
-</div>
-
-
-<div class="app-dashboard-body off-canvas-wrapper">
-    <div id="app-dashboard-sidebar"
-         class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
-         data-off-canvas>
-        <div class="app-dashboard-sidebar-title-area">
-
-            <div class="app-dashboard-open-sidebar">
-                <button id="open-sidebar" data-app-dashboard-toggle-shrink
-                        class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu"
-                        type="button">
-                    <span aria-hidden="true"><a href="#"><i class="large fi fi-angle-double-right"></i></a></span>
-                </button>
+        <div class="columns medium-5">
+            <div class="app-dashboard-search-bar-container">
+                <input class="app-dashboard-search" type="search" placeholder="Search">
+                <i class="app-dashboard-search-icon fa fa-search"></i>
             </div>
         </div>
-        <div class="app-dashboard-sidebar-inner">
-            <ul class="menu vertical">
-                <li><h4><a href="#" class="is-active" style="padding: 30px;">
-                        <i class="fi-list-thumbnails medium"></i><span
-                                class="app-dashboard-sidebar-text">Invoices</span>
-                    </a></h4></li>
-                <li><a href="#">
-                        <i class="fi-torsos-all large"></i><span
-                                class="app-dashboard-sidebar-text">Departments</span>
-                    </a></li>
-                <li><a href="#">
-                        <i class="fi-torsos-all large"></i><span class="app-dashboard-sidebar-text">Clients</span>
-                    </a></li>
 
+        @guest
+
+        @else
+        <div class="columns medium-1">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li>
+                    <a href="#">{{ Auth::user()->name }}</a>
+                    <ul class="menu">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+
+                </li>
             </ul>
         </div>
+        @endguest
     </div>
 
-    <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+
+    <div class="app-dashboard-body off-canvas-wrapper">
+        <div id="app-dashboard-sidebar"
+             class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
+             data-off-canvas>
+            <div class="app-dashboard-sidebar-title-area">
+
+                <div class="app-dashboard-open-sidebar">
+                    <button id="open-sidebar" data-app-dashboard-toggle-shrink
+                            class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu"
+                            type="button">
+                        <span aria-hidden="true"><a href="#"><i class="large fi fi-angle-double-right"></i></a></span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-dashboard-sidebar-inner">
+                <ul class="menu vertical">
+                    <li>
+                        <a href="/home" class="is-active" >
+                            <i class="fa fa-tachometer" aria-hidden="true"></i><span class="app-dashboard-sidebar-text">Dashboard</span>
+                        </a></li>
+                    <li ><a href="#" class="is-active">
+                            <i class="fi-list-thumbnails medium"></i><span
+                                    class="app-dashboard-sidebar-text">Invoices</span>
+                        </a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-shopping-basket"></i>
+                            <span class="app-dashboard-sidebar-text"> Products </span>
+                        </a></li>
+                    <li><a href="#"><i class="fi-torsos-all large"></i><span class="app-dashboard-sidebar-text">
+                            Clients
+                        </span></a></li>
+                    <li><a href="#"><i class="fa fa-users"></i><span class="app-dashboard-sidebar-text">
+                            Clients
+                        </span></a></li>
+                    <li>
+                        <a href="{{route('view.departments')}}"><i class="fa fa-university"></i>
+                            <span class="app-dashboard-sidebar-text"> Departments </span>
+                        </a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
 
 
+            @yield('content')
 
-        @yield('content')
-
+        </div>
     </div>
-</div>
 
 </div>
 

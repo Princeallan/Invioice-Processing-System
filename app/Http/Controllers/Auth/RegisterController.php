@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Notifications\UserRegisteredSuccessfully;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -35,24 +37,58 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('guest');
+//    }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param Request $request
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function register(Request $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+        $validatedData = $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
+
+        try {
+            $validatedData['password']        = bcrypt(array_get($validatedData, 'password'));
+            $validatedData['activation_code'] = str_random(30).time();
+            $user                             = app(User::class)->create($validatedData);
+        } catch (\Exception $exception) {
+            logger()->error($exception);
+            return redirect()->back()->with('message', 'Unable to create new user.');
+        }
+        $user->notify(new UserRegisteredSuccessfully($user));
+        return redirect()->back()->with('message', 'Successfully created a new account. Please check your email and activate your account.');
+
+    }
+
+    /**
+     * @param string $activationCode
+     * @return \Illuminate\Http\RedirectResponse|string
+     */
+    public function activateUser(string $activationCode)
+    {
+        try {
+            $user = app(User::class)->where('activation_code', $activationCode)->first();
+            if (!$user) {
+                return "The code does not exist for any user in our system.";
+            }
+            $user->status          = 1;
+            $user->activation_code = null;
+            $user->save();
+            auth()->login($user);
+        } catch (\Exception $exception) {
+            logger()->error($exception);
+            return "Whoops! something went wrong.";
+        }
+        return redirect()->to('/home');
     }
 
     /**
@@ -65,7 +101,9 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
+            'status' => $data['status'],
             'password' => Hash::make($data['password']),
         ]);
     }

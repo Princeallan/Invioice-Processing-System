@@ -20,13 +20,15 @@
 
                 axios.post('/api/departments/save', data).then(function (response) {
 
+                    window.location.href = '/api/departments';
+
                     vm.$notify({
                         title: 'Success',
                         message: response.data,
                         type: 'success'
                     });
 
-                    window.location.href = '/home';
+
 
                 });
             }

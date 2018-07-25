@@ -2,6 +2,6 @@
 
 @section('content')
 
-<i class="fa fa-user-circle"></i>
+    <create-invoice></create-invoice>
 
 @endsection

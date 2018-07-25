@@ -13005,6 +13005,7 @@ a.thumbnail image {
   overflow-x: visible;
   overflow-y: auto;
   z-index: 1;
+  width: 200px;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
@@ -13020,7 +13021,7 @@ a.thumbnail image {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 2rem 1rem;
+  padding: 10rem 10rem;
 }
 
 .app-dashboard-sidebar .app-dashboard-sidebar-close-button {
@@ -13028,12 +13029,20 @@ a.thumbnail image {
 }
 
 .app-dashboard-sidebar .app-dashboard-sidebar-inner {
+  background-color: #2c3840;
+  color: white;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.app-dashboard-sidebar .app-dashboard-sidebar-inner .menu > li > a {
+.app-dashboard-sidebar .app-dashboard-sidebar-inner .menu > li {
+  margin-top: 10px;
+}
+
+.app-dashboard-sidebar .app-dashboard-sidebar-inner .menu > li a {
+  color: white;
+  padding: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -13069,6 +13078,7 @@ a.thumbnail image {
       -ms-flex: 1 1 0px;
           flex: 1 1 0;
   padding: 20px;
+  margin-left: 0;
   background-color: #fefefe;
 }
 
@@ -13083,7 +13093,7 @@ a.thumbnail image {
   }
 
   .app-dashboard.shrink-medium .app-dashboard-sidebar {
-    width: 80px;
+    width: 60px;
   }
 
   .app-dashboard.shrink-medium .app-dashboard-sidebar .fa.large {
@@ -13091,8 +13101,7 @@ a.thumbnail image {
   }
 
   .app-dashboard.shrink-medium .off-canvas-content {
-    margin-left: 80px;
-    width: calc(100% - 80px);
+    margin-left: 0;
   }
 
   .app-dashboard.shrink-medium .navigation {
@@ -13104,6 +13113,10 @@ a.thumbnail image {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+
+  .app-dashboard.shrink-medium .menu li {
+    padding: 10px;
   }
 
   .app-dashboard.shrink-medium .menu li::after {
@@ -13140,7 +13153,7 @@ a.thumbnail image {
   }
 
   .app-dashboard.shrink-large .app-dashboard-sidebar {
-    width: 80px;
+    width: 60px;
   }
 
   .app-dashboard.shrink-large .app-dashboard-sidebar .fa.large {
@@ -13148,8 +13161,7 @@ a.thumbnail image {
   }
 
   .app-dashboard.shrink-large .off-canvas-content {
-    margin-left: 80px;
-    width: calc(100% - 80px);
+    margin-left: 0;
   }
 
   .app-dashboard.shrink-large .navigation {
@@ -13161,6 +13173,10 @@ a.thumbnail image {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+
+  .app-dashboard.shrink-large .menu li {
+    padding: 10px;
   }
 
   .app-dashboard.shrink-large .menu li::after {

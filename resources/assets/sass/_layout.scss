@@ -1,8 +1,10 @@
 $app-dashboard-top-nav-color: #2c3840;
 $app-dashboard-top-nav-height: 55px;
-.login-form{
+
+.login-form {
   margin-top: 150px;
 }
+
 .app-dashboard {
   height: 100vh;
   display: flex;
@@ -14,7 +16,7 @@ $app-dashboard-top-nav-height: 55px;
   display: flex;
 }
 
-.app-dashboard-top-nav-bar  {
+.app-dashboard-top-nav-bar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,14 +90,14 @@ $app-dashboard-top-nav-height: 55px;
   overflow-x: visible;
   overflow-y: auto;
   z-index: 1;
+  width: 200px;
   transition: all $offcanvas-transition-length $offcanvas-transition-timing;
 
-
-  .app-dashboard-open-sidebar, .app-dashboard-close-sidebar{
+  .app-dashboard-open-sidebar, .app-dashboard-close-sidebar {
     align-items: baseline;
     display: flex;
     justify-content: space-between;
-    padding: 2rem 1rem;
+    padding: 10rem 10rem;
   }
 
   .app-dashboard-sidebar-close-button {
@@ -103,11 +105,19 @@ $app-dashboard-top-nav-height: 55px;
   }
 
   .app-dashboard-sidebar-inner {
+    background-color: #2c3840;
+    color: white;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    .menu > li > a {
-      align-items: center;
+    .menu > li {
+      margin-top: 10px;
+
+      a {
+        color: white;
+        padding: 10px;
+        align-items: center;
+      }
     }
   }
   .fa.large {
@@ -140,6 +150,7 @@ $app-dashboard-top-nav-height: 55px;
   overflow-y: auto;
   flex: 1 1 0;
   padding: 20px;
+  margin-left: 0;
   background-color: $white;
 }
 
@@ -153,15 +164,15 @@ $app-dashboard-top-nav-height: 55px;
   }
 
   .app-dashboard-sidebar {
-    width: 80px;
+    width: 60px;
     .fa.large {
       width: auto;
     }
   }
 
   .off-canvas-content {
-    margin-left: 80px;
-    width: calc(100% - 80px);
+    margin-left: 0;
+    //width: calc(100% - 80px);
   }
 
   .navigation {
@@ -175,6 +186,7 @@ $app-dashboard-top-nav-height: 55px;
 
   .menu {
     li {
+      padding: 10px;
       &::after {
         display: none;
         opacity: 0;
@@ -202,6 +214,7 @@ $app-dashboard-top-nav-height: 55px;
     @include shrunk-sidebar()
   }
 }
+
 @include breakpoint(large) {
   .app-dashboard.shrink-large {
     @include shrunk-sidebar()

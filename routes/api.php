@@ -22,3 +22,5 @@ Route::get('/departments', 'DepartmentsController@index')->name('view.department
 Route::get('/departments/create', 'DepartmentsController@create')->name('create.department');
 
 Route::post('/departments/save', 'DepartmentsController@store');
+
+Route::get('/invoices/create', 'InvoicesController@create');

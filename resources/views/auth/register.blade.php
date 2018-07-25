@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -24,6 +24,18 @@
                     @if ($errors->has('name'))
                         <span class="help-text" id="nameHelpText">
                             <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="username">
+                    <label for="username">Username</label>
+
+                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" aria-describedby="nameHelpText" required>
+
+                    @if ($errors->has('username'))
+                        <span class="help-text" id="nameHelpText">
+                            <strong>{{ $errors->first('username') }}</strong>
                         </span>
                     @endif
                 </div>
