@@ -7,7 +7,7 @@
             <div class="grid-x">
                 <div class="medium-offset-2 medium-5">
                     <div class="form-group">
-                        <a class="button primary" href="{{route('view.departments')}}">View Departments</a>
+                        <a class="button primary" href="{{route('departments')}}">View Departments</a>
                     </div>
 
                     <create-department></create-department>

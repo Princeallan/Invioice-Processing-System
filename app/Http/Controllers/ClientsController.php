@@ -102,7 +102,7 @@ class ClientsController extends Controller
 
        $clients->update($request->all());
 
-       return redirect()->route('clients.show', ["id" => $clients->id]);
+       return redirect()->route('clients.index');
 
     }
 

@@ -83,14 +83,14 @@
                         <a href="#"><i class="fa fa-shopping-basket"></i>
                             <span class="app-dashboard-sidebar-text"> Products </span>
                         </a></li>
-                    <li><a href="#"><i class="fi-torsos-all large"></i><span class="app-dashboard-sidebar-text">
-                            Clients
+                    <li><a href="/users"><i class="fi-torsos-all large"></i><span class="app-dashboard-sidebar-text">
+                            Team
                         </span></a></li>
-                    <li><a href="#"><i class="fa fa-users"></i><span class="app-dashboard-sidebar-text">
+                    <li><a href="/clients"><i class="fa fa-users"></i><span class="app-dashboard-sidebar-text">
                             Clients
                         </span></a></li>
                     <li>
-                        <a href="{{route('view.departments')}}"><i class="fa fa-university"></i>
+                        <a href="{{route('departments')}}"><i class="fa fa-university"></i>
                             <span class="app-dashboard-sidebar-text"> Departments </span>
                         </a></li>
 

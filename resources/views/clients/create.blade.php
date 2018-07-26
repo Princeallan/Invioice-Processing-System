@@ -6,7 +6,7 @@
         <form action="{{route('clients.store')}}" method="post">
             @csrf
             <div class="row columns small-8">
-            <h3>Add new Client</h3><a class="button primary" href="{{route('clients.index')}}">Add Department</a>
+            <h3>Add new Client</h3><a class="button primary" href="{{route('clients.index')}}">Clients List</a>
             </div>
             <div class="row columns small-8">
                 <input type="text" name="name" placeholder="Company Name" required>

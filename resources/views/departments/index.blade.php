@@ -10,7 +10,7 @@
                         <a class="button primary" href="{{route('create.department')}}">Add Department</a>
                     </div>
 
-                    <departments></departments>
+                    <departments ><slot></slot></departments>
 
                 </div>
             </div>

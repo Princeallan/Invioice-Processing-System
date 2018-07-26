@@ -17,10 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/departments', 'DepartmentsController@index')->name('view.departments');
+Route::get('departments', 'DepartmentsController@getDepartments');
 
 Route::get('/departments/create', 'DepartmentsController@create')->name('create.department');
 
 Route::post('/departments/save', 'DepartmentsController@store');
 
-Route::get('/invoices/create', 'InvoicesController@create');
+Route::get('/products/create', 'ProductsController@create');
+
+Route::post('/products/save', 'ProductsController@store');

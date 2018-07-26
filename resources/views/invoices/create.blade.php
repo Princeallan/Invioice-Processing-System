@@ -2,6 +2,5 @@
 
 @section('content')
 
-    <create-invoice></create-invoice>
 
 @endsection

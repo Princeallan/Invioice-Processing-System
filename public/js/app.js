@@ -15924,8 +15924,6 @@ window.Vue = __webpack_require__(2);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('departments', __webpack_require__(104));
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('create-invoice', __webpack_require__(107));
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('create-department', __webpack_require__(54));
 
 
@@ -56510,37 +56508,10 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'invoices',
-
+    // props: ['departments'],
     data: function data() {
         return {
             departments: []
@@ -56550,13 +56521,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getDepartments: function getDepartments() {
-            var _this = this;
-
             var vm = this;
+
             axios.get('/api/departments').then(function (response) {
-                var data = response.data;
+                var data = response.data.data;
                 if (data) {
-                    _this.$set(_this, 'departments', response.data.data);
+                    // vm.$set(this, 'departments', response.data.data);
+                    vm.departments = data;
                 }
             }, function () {
                 console.log('failed');
@@ -56566,6 +56537,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.getDepartments();
+    },
+
+
+    computed: {
+        // departments() {
+        //     let self = this;
+        //     return self.department();
+        // }
     }
 });
 
@@ -56577,48 +56556,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("table", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "tbody",
+      _vm._l(_vm.departments, function(department) {
+        return _c("tr", [
+          _c("td", [_vm._v("1")]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(department.name))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(department.description))]),
+          _vm._v(" "),
+          _vm._m(1, true)
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("#")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Invoice No.")]),
-          _vm._v(" "),
-          _c("th", [_vm._v(" Invoice Description")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Action")])
-        ])
-      ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Department ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "button",
+        { staticClass: "warning button", attrs: { type: "submit" } },
+        [_vm._v("Edit")]
+      ),
       _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [_vm._v("1")]),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              { staticClass: "warning button", attrs: { type: "submit" } },
-              [_vm._v("Edit")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "alert button", attrs: { type: "submit" } },
-              [_vm._v("Delete")]
-            )
-          ])
-        ])
+      _c("button", { staticClass: "alert button", attrs: { type: "submit" } }, [
+        _vm._v("Delete")
       ])
     ])
   }
@@ -56633,266 +56619,8 @@ if (false) {
 }
 
 /***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(26)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(108)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/invoices/create.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a0e3ee04", Component.options)
-  } else {
-    hotAPI.reload("data-v-a0e3ee04", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "panel-heading" }, [
-        _c("span", { staticClass: "panel-title" }, [_vm._v("Invoice")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel-body" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "medium-12" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Customer")]),
-              _vm._v(" "),
-              _c("small", { staticClass: "error-control" })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "medium-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [
-                _vm._v(
-                  "\n                        Number\n                        "
-                ),
-                _c("small", [_vm._v("Auto Generated")])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "form-control" })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "medium-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [
-                _vm._v("Reference\n                        "),
-                _c("small", [_vm._v("Optional")])
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text" }
-              }),
-              _vm._v(" "),
-              _c("small", { staticClass: "error-control" })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "medium-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "date" }
-              }),
-              _vm._v(" "),
-              _c("small", { staticClass: "error-control" })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "medium-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Due Date")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "date" }
-              }),
-              _vm._v(" "),
-              _c("small", { staticClass: "error-control" })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("table", { staticClass: "form-table" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("Item Description")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Unit Price")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Qty")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Total")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", { staticClass: "w-14" }, [
-                _c("small", { staticClass: "error-control" })
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "w-4" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text" }
-                }),
-                _vm._v(" "),
-                _c("small", { staticClass: "error-control" })
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "w-2" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text" }
-                }),
-                _vm._v(" "),
-                _c("small", { staticClass: "error-control" })
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "w-4" }, [
-                _c("span", { staticClass: "form-control" })
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "form-remove" }, [_vm._v("×")])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tfoot", [
-            _c("tr", [
-              _c("td", { attrs: { colspan: "2" } }, [
-                _c("button", { staticClass: "btn btn-sm" }, [
-                  _vm._v("Add New Line")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "form-summary" }, [_vm._v("Sub Total")]),
-              _vm._v(" "),
-              _c("td")
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                { staticClass: "form-summary", attrs: { colspan: "3" } },
-                [_vm._v("Discount")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text" }
-                }),
-                _vm._v(" "),
-                _c("small", { staticClass: "form-control" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                { staticClass: "form-summary", attrs: { colspan: "3" } },
-                [_vm._v("Grand Total")]
-              ),
-              _vm._v(" "),
-              _c("td")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "medium-12" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Terms and Conditions")]),
-              _vm._v(" "),
-              _c("textarea", { staticClass: "form-control" }),
-              _vm._v(" "),
-              _c("small", { staticClass: "error-control" })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel-footer flex-end" }, [
-        _c("div", [
-          _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Save")]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn" }, [_vm._v("Cancel")])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a0e3ee04", module.exports)
-  }
-}
-
-/***/ }),
+/* 107 */,
+/* 108 */,
 /* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56921,7 +56649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/api/departments/save', data).then(function (response) {
 
-                window.location.href = '/api/departments';
+                window.location.href = '/departments';
 
                 vm.$notify({
                     title: 'Success',

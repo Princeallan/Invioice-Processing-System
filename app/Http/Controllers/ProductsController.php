@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class InvoicesController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class InvoicesController extends Controller
      */
     public function index()
     {
-        return view('invoices.index');
+        //
     }
 
     /**
@@ -23,16 +23,14 @@ class InvoicesController extends Controller
      */
     public function create()
     {
-
-        return view('invoices.create');
-
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return void
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {

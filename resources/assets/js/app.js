@@ -6,8 +6,6 @@ window.Vue = require('vue');
 
 Vue.component('departments', require('./components/departments/departmentslist.vue'));
 
-Vue.component('create-invoice', require('./components/invoices/create'));
-
 Vue.component('create-department', require('./components/departments/create.vue'));
 
 

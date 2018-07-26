@@ -8,8 +8,12 @@
 
         <div class="form-container small-6 small-centered columns">
 
+            <div class="form-group">
+                <a class="button primary" href="{{route('departments')}}">View Departments</a>
+            </div>
+
             <div class="form-title text-center">
-                Register
+                <h4> Add new User </h4>
             </div>
 
             <form class="register-form" method="POST" action="{{ route('register') }}">
@@ -51,6 +55,18 @@
                         </span>
                     @endif
                 </div>
+
+                {{--<div class="email">--}}
+                    {{--<label for="email">E-Mail Address</label>--}}
+
+                    {{--<input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required>--}}
+
+                    {{--@if ($errors->has('email'))--}}
+                        {{--<span class="help-text" id="emailHelpText">--}}
+                            {{--<strong>{{ $errors->first('email') }}</strong>--}}
+                        {{--</span>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
 
                 <div class="password">
                     <label for="password">Password</label>

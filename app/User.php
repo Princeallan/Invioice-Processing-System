@@ -26,9 +26,9 @@ class User extends Authenticatable
         return $this->belongsTo(Department::class);
     }
 
-    public function invoices()
+    public function clients()
     {
-        return $this->hasMany(Invoice::class);
+        return $this->belongsTo(Product::class);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a class="button primary" href="{{route('clients.create')}}">Add Department</a>
+    <a class="button primary" href="{{route('clients.create')}}">Add Company</a>
     <table class="hover">
         <thead>
         <tr>
@@ -28,7 +28,8 @@
                     <td>{{$client->city}}</td>
                     <td>{{$client->country}}</td>
                     <td>
-                        edit/delete
+                        <button type="submit" class="warning button">Edit</button>
+                        <button type="submit" class="alert button">Delete</button>
                     </td>
                 </tr>
             @endforeach

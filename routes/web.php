@@ -15,15 +15,19 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
 
-Route::get('/invoices', 'HomeController@index')->name('home');
+Route::get('/departments', 'DepartmentsController@index')->name('departments');
 
 Auth::routes();
 
 $this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('/home');
+
+Route::get('/users', 'HomeController@getUsers');
 
 Route::resource('clients', 'ClientsController');
+
+Route::get('/invoices', 'InvoicesController@index');
+
 
