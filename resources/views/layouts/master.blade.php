@@ -80,7 +80,7 @@
                                     class="app-dashboard-sidebar-text">Invoices</span>
                         </a></li>
                     <li>
-                        <a href="#"><i class="fa fa-shopping-basket"></i>
+                        <a href="{{route('products')}}"><i class="fa fa-shopping-basket"></i>
                             <span class="app-dashboard-sidebar-text"> Products </span>
                         </a></li>
                     <li><a href="/users"><i class="fi-torsos-all large"></i><span class="app-dashboard-sidebar-text">

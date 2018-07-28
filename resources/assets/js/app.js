@@ -2,15 +2,22 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+import Vue from 'vue';
+import router from './routes'
 
 Vue.component('departments', require('./components/departments/departmentslist.vue'));
 
 Vue.component('create-department', require('./components/departments/create.vue'));
 
+Vue.component('create-product', require('./components/Products/CreateProduct.vue'));
 
-import Vue from 'vue';
-import router from './routes'
+Vue.component('products', require('./components/Products/ProductList.vue'));
+
+Vue.component('createinvoice', require('./components/Invoices/CreateInvoice'));
+
+// Vue.component('create', require('./components/Invoices/Create'));
+
+
 
 
 import ElementUI from 'element-ui';

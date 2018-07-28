@@ -2,102 +2,131 @@
 
 @section('content')
 
-<div class="container">
+    <div class="container">
 
-    <div class="row">
+        <div class="row">
 
-        <div class="form-container small-6 small-centered columns">
+            <div class="form-container small-6 small-centered columns">
 
-            <div class="form-group">
-                <a class="button primary" href="{{route('departments')}}">View Departments</a>
-            </div>
+                <div class="form-group">
+                    <a class="button primary" href="/users">View Users</a>
+                </div>
 
-            <div class="form-title text-center">
-                <h4> Add new User </h4>
-            </div>
+                <div class="form-title text-center">
+                    <h4> Add new User </h4>
+                </div>
 
-            <form class="register-form" method="POST" action="{{ route('register') }}">
+                <form class="register-form" method="POST" action="{{ route('register') }}">
 
-                {{ csrf_field() }}
+                    {{ csrf_field() }}
 
-                <div class="name">
-                    <label for="email">Name</label>
+                    <div class="name">
+                        <label for="email">Name</label>
 
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" aria-describedby="nameHelpText" required autofocus>
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
+                               aria-describedby="nameHelpText" required autofocus>
 
-                    @if ($errors->has('name'))
-                        <span class="help-text" id="nameHelpText">
+                        @if ($errors->has('name'))
+                            <span class="help-text" id="nameHelpText">
                             <strong>{{ $errors->first('name') }}</strong>
                         </span>
-                    @endif
-                </div>
+                        @endif
+                    </div>
 
-                <div class="username">
-                    <label for="username">Username</label>
+                    <div class="username">
+                        <label for="username">Username</label>
 
-                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" aria-describedby="nameHelpText" required>
+                        <input id="username" type="text" class="form-control" name="username"
+                               value="{{ old('username') }}" aria-describedby="nameHelpText" required>
 
-                    @if ($errors->has('username'))
-                        <span class="help-text" id="nameHelpText">
+                        @if ($errors->has('username'))
+                            <span class="help-text" id="nameHelpText">
                             <strong>{{ $errors->first('username') }}</strong>
                         </span>
-                    @endif
-                </div>
+                        @endif
+                    </div>
 
-                <div class="email">
-                    <label for="email">E-Mail Address</label>
+                    <div class="email">
+                        <label for="email">E-Mail Address</label>
 
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}"
+                               aria-describedby="emailHelpText" required>
 
-                    @if ($errors->has('email'))
-                        <span class="help-text" id="emailHelpText">
+                        @if ($errors->has('email'))
+                            <span class="help-text" id="emailHelpText">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
-                    @endif
-                </div>
+                        @endif
+                    </div>
 
-                {{--<div class="email">--}}
-                    {{--<label for="email">E-Mail Address</label>--}}
+                    <div class="department_id">
+                        <label>Department
+                            <select>
 
-                    {{--<input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required>--}}
+                                <option value="">Choose the Department</option>
 
-                    {{--@if ($errors->has('email'))--}}
-                        {{--<span class="help-text" id="emailHelpText">--}}
-                            {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                        {{--</span>--}}
-                    {{--@endif--}}
-                {{--</div>--}}
+                            @foreach($departments as $department)
 
-                <div class="password">
-                    <label for="password">Password</label>
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                        @if ($errors->has('department_id'))
+                            <span class="help-text" id="emailHelpText">
+                        <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
+                    </div>
 
-                    <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    <div class="client_id">
+                        <label>Company
+                            <select>
+                                <option value="">Choose the Company</option>
 
-                    @if ($errors->has('password'))
-                        <span class="help-text" id="passwordHelpText">
+                            @foreach($clients as $client)
+                                    <option value="{{$client->id}}">{{$client->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </label>
+                        @if ($errors->has('client_id'))
+                            <span class="help-text" id="emailHelpText">
+                        <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+
+                    <div class="password">
+                        <label for="password">Password</label>
+
+                        <input id="password" type="password" value="123456" name="password" aria-describedby="passwordHelpText"
+                               required readonly>
+
+                        @if ($errors->has('password'))
+                            <span class="help-text" id="passwordHelpText">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
-                    @endif
-                </div>
+                        @endif
+                    </div>
 
-                <div class="password-confirm">
-                    <label for="password-confirm">Confirm Password</label>
-                    <input id="password-confirm" type="password" name="password_confirmation" required>
-                </div>
+                    <div class="password-confirm">
+                        <label for="password-confirm">Confirm Password</label>
+                        <input id="password-confirm" type="password" name="password_confirmation" value="123456" required readonly>
+                    </div>
 
-                <div class="register_button">
-                    <button type="submit" class="button">
-                        Register
-                    </button>
-                </div>
+                    <div class="register_button">
+                        <button type="submit" class="button">
+                            Register
+                        </button>
+                    </div>
 
 
-            </form>
+                </form>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 @endsection

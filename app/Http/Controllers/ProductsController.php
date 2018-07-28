@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -13,7 +14,23 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('products.index', compact('products'));
+    }
+
+    function getProducts()
+    {
+
+        $products = Product::all();
+
+        return response()->json([
+
+            'fetched'=>true,
+            'data'=> $products
+
+        ]);
+
     }
 
     /**
@@ -21,20 +38,27 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        //
+
+        return view('products.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function store(Request $request)
     {
-        //
+
+        $products = Product::create($request->all());
+
+        return 'Saved';
+
     }
 
     /**

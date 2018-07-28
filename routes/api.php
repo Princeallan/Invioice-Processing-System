@@ -23,6 +23,12 @@ Route::get('/departments/create', 'DepartmentsController@create')->name('create.
 
 Route::post('/departments/save', 'DepartmentsController@store');
 
-Route::get('/products/create', 'ProductsController@create');
+Route::get('products', 'ProductsController@getProducts');
+
+Route::get('/products/create', 'ProductsController@create')->name('products.create');
 
 Route::post('/products/save', 'ProductsController@store');
+
+Route::post('/invoices/save', 'InvoicesController@store');
+
+Route::get('/invoices/create', 'InvoicesController@create')->name('invoices.create');

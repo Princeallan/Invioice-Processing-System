@@ -18,6 +18,10 @@ Route::get('/', function () {
 
 Route::get('/departments', 'DepartmentsController@index')->name('departments');
 
+Route::get('/products', 'ProductsController@index')->name('products');
+
+Route::resource('invoices', 'InvoicesController');
+
 Auth::routes();
 
 $this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
@@ -28,6 +32,5 @@ Route::get('/users', 'HomeController@getUsers');
 
 Route::resource('clients', 'ClientsController');
 
-Route::get('/invoices', 'InvoicesController@index');
 
 

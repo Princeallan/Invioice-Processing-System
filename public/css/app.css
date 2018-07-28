@@ -13215,13 +13215,13 @@ a.thumbnail image {
   color: #555;
 }
 
-.invoice-box table {
+.invoice-box .invoice-box table {
   width: 100%;
   line-height: inherit;
   text-align: left;
 }
 
-.invoice-box table td {
+.invoice-box .invoice-box table .invoice-box table td {
   padding: 5px;
   vertical-align: top;
 }

@@ -8,17 +8,17 @@
   line-height: 24px;
   font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
   color: #555;
-}
 
-.invoice-box table {
-  width: 100%;
-  line-height: inherit;
-  text-align: left;
-}
+  .invoice-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
 
-.invoice-box table td {
-  padding: 5px;
-  vertical-align: top;
+    .invoice-box table td {
+      padding: 5px;
+      vertical-align: top;
+    }
+  }
 }
 
 .invoice-box table tr td:nth-child(2) {
@@ -49,7 +49,7 @@
   padding-bottom: 20px;
 }
 
-.invoice-box table tr.item td{
+.invoice-box table tr.item td {
   border-bottom: 1px solid #eee;
 }
 

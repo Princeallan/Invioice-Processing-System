@@ -35,19 +35,19 @@
 </script>
 <template>
 
-<div>
-    <div class="form-group">
-        <label>Name </label>
-        <input type="text" name="title" v-model="department.name">
+    <div>
+        <div class="form-group">
+            <label>Name </label>
+            <input type="text" name="title" v-model="department.name">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea placeholder="Describe the board..." name="description" v-model="department.description"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="button primary" type="submit" @click="addDepartment">Add Department</button>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Description</label>
-        <textarea placeholder="Describe the board..." name="description" v-model="department.description"></textarea>
-    </div>
-    <div class="form-group">
-        <button class="button primary" type="submit" @click="addDepartment">Add Department</button>
-    </div>
-</div>
 
 </template>
 

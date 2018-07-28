@@ -2,97 +2,61 @@
 
 @section('content')
 
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>
-                #INV NO
-            </th>
-            <th>
-                Client
-            </th>
-            <th>
-                Product
-            </th>
-            <th>
-                Paid
-            </th>
-            <th>
-                Bill date
-            </th>
-            <th>
-                Due
-            </th>
-            <th>
-                Total
-            </th>
-            <th>
-                status
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($invoices as $invoice)
-            <tr>
-                <td>
-                    {{ $invoice->invoice_no }}
-                </td>
-                <td>
-                    {{ $invoice->user->name }}
-                </td>
-                <td>
-                    {{ $invoice->product->name }}
-                </td>
-                <td>
-                    @if($invoice->isPaid())
-                        <i class="fa fa-check text-success"></i>
-                    @else
-                        <i class="fa fa-times text-danger"></i>
-                    @endif
-                </td>
-                <td>
-                    {{ $invoice->created_at }}
-                </td>
-                <td>
-                    @if($invoice->due_at->timestamp > 0)
-                        {{ $invoice->due_at->format('F d, Y') }}
-                    @else
-                        No Due Date
-                    @endif
-                </td>
+            <div class="clearfix">
+                <span class="panel-title">Invoices</span>
+                <a href="{{route('invoices.create')}}" class="btn btn-success pull-right">Create</a>
+            </div>
 
-                <td>
-                    <a href="{{ route('invoice.payments.listing', $invoice) }}">
-                        ${{ $invoice->getCurrencyFormat($invoice->amount) }}
-                    </a>
-                </td>
-                <td>
-                    ${{ $invoice->getCurrencyFormat($invoice->amountOwing()) }}
-                </td>
-                <td>
-                    @if($invoice->payments()->count() > 0)
-                        {{ $invoice->payments()->orderBy('created_at', 'desc')->first()->created_at->format('F d, Y') }}
+        <div class="panel-body">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Invoice No.</th>
+                        <th>Client</th>
+                        <th>Grand Total</th>
+                        <th>Invoice Date</th>
+                        <th>Due Date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @if($invoices)
+
+                    @foreach($invoices as $invoice)
+                        <tr>
+                            <td>{{$invoice->invoice_no}}</td>
+                            <td>{{$invoice->client}}</td>
+                            <td>${{$invoice->grand_total}}</td>
+                            <td>{{$invoice->created_at->diffForHumans()}}</td>
+                            <td>{{$invoice->due_date}}</td>
+                            <td class="text-right">
+                                <a href="{{route('invoices.show', $invoice)}}" class="btn btn-default btn-sm">View</a>
+                                <a href="{{route('invoices.edit', $invoice)}}" class="btn btn-primary btn-sm">Edit</a>
+                                <form class="form-inline" method="post"
+                                      action="{{route('invoices.destroy', $invoice)}}"
+                                      onsubmit="return confirm('Are you sure?')"
+                                >
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                     @else
-                        No Payment Recorded
-                    @endif
-                </td>
-                <td class="td-actions text-right">
-                    <a href="{{ route('invoice.payments.create', $invoice) }}" class="btn btn-success btn-simple btn-sm">
-                        <i class="ti-plus"></i> Payment
-                    </a>
-                    <a href="{{ route('project.edit', $invoice) }}" class="btn btn-success btn-simple btn-sm">
-                        <i class="ti-pencil-alt"></i> Edit
-                    </a>
-                    <a href="{{ route('project.destroy', $invoice) }}" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-simple btn-sm">
-                        <i class="ti-close"></i> Remove
-                    </a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
+                {!! $invoices->render() !!}
+
+                <div class="invoice-empty">
+                    <p class="invoice-empty-title">
+                        No Invoices were created.
+                        <a href="{{route('invoices.create')}}">Create Now!</a>
+                    </p>
+                </div>
+            @endif
+        </div>
 
 @endsection

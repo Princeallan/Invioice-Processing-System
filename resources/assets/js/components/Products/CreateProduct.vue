@@ -1,31 +1,33 @@
 <script>
     export default {
-        // props: ['userId'],
         data() {
             return {
                 product: {
-                    name: '',
-                    description: '',
+                    name:'',
+                    description:'',
+                    quantity:'',
+                    unit_price:''
                 },
 
                 edit: false
             }
         },
         methods: {
-            addDepartment() {
+            addProduct() {
 
                 let vm = this;
 
-                let data = vm.department;
+                let data = vm.product;
 
-                axios.post('/api/departments/save', data).then(function (response) {
+                axios.post('/api/products/save', data).then(function (response) {
 
-                    window.location.href = '/departments';
+                    window.location.href = '/products';
 
                     vm.$notify({
                         title: 'Success',
                         message: response.data,
                         type: 'success'
+
                     });
 
                 });
@@ -36,17 +38,26 @@
 </script>
 <template>
 
-    <div>
-        <div class="form-group">
-            <label>Name </label>
-            <input type="text" name="title" v-model="department.name">
+    <div >
+        <div class="row columns small-8">
+            <h3>Add new Product</h3>
         </div>
-        <div class="form-group">
-            <label>Description</label>
-            <textarea placeholder="Describe the board..." name="description" v-model="department.description"></textarea>
+        <div class="row columns small-8">
+            <input type="text" v-model="product.name" placeholder="Product Name" required>
         </div>
-        <div class="form-group">
-            <button class="button primary" type="submit" @click="addDepartment">Add Department</button>
+        <div class="row columns small-8">
+            <input type="text" v-model="product.description" placeholder="Description" required>
+        </div>
+        <div class="row columns small-8">
+            <input type="number" v-model="product.quantity" placeholder="Quantity" required>
+        </div>
+        <div class="row columns small-8">
+            <input type="number" v-model="product.unit_price" placeholder="Pricing" required>
+        </div>
+        <div class="row columns small-8">
+            <button type="submit" class="success button pull-right" @click="addProduct">
+                Submit
+            </button>
         </div>
     </div>
 

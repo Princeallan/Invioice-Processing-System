@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
+use App\Product;
+use App\Invoice;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
@@ -13,7 +16,12 @@ class InvoicesController extends Controller
      */
     public function index()
     {
-        return view('invoices.index');
+
+        $products = Product::all();
+        $clients = Client::all();
+        $invoices = Invoice::all();
+
+        return view('invoices.index', compact('products', 'clients', 'invoices'));
     }
 
     /**
@@ -23,8 +31,10 @@ class InvoicesController extends Controller
      */
     public function create()
     {
+        $products = Product::all();
+        $clients = Client::all();
 
-        return view('invoices.create');
+        return view('invoices.create', compact('products', 'clients'));
 
     }
 
@@ -32,11 +42,31 @@ class InvoicesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return void
+     * @return string
      */
     public function store(Request $request)
     {
-        //
+
+        $invoice = Invoice::create($request->all());
+
+//        $products = collect($request->products)->transform(function($product) {
+//            $product['total'] = $product['qty'] * $product['price'];
+//            return new ($product);
+//        });
+//
+//        if($products->isEmpty()) {
+//            echo "";
+//        }
+//
+//        $data = $request->except('products');
+//        $data['sub_total'] = $products->sum('total');
+//        $data['grand_total'] = $data['sub_total'] - $data['discount'];
+//
+//        $invoice = Invoice::create($data);
+//
+//        $invoice->products()->saveMany($products);
+//
+//        return 'saved';
     }
 
     /**

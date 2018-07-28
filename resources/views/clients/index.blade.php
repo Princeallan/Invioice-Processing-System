@@ -28,8 +28,9 @@
                     <td>{{$client->city}}</td>
                     <td>{{$client->country}}</td>
                     <td>
-                        <button type="submit" class="warning button">Edit</button>
-                        <button type="submit" class="alert button">Delete</button>
+                        <button type="submit" class="warning button"><i class="fa fa-edit"></i></button>
+
+                        <button type="submit" class="alert button"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
             @endforeach
