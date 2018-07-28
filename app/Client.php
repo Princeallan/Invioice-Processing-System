@@ -14,4 +14,9 @@ class Client extends Model
         'postal_code',
         'country'
     ];
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

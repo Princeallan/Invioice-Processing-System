@@ -24,4 +24,9 @@ class Invoice extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, ' client_id');
+    }
 }

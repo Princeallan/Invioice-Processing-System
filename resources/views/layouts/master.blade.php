@@ -32,25 +32,26 @@
         @guest
 
         @else
-        <div class="columns medium-1">
-            <ul class="dropdown menu" data-dropdown-menu>
-                <li>
-                    <a href="#">{{ Auth::user()->name }}</a>
-                    <ul class="menu">
-                        <li>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
+            <div class="columns medium-1">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li>
+                        <a href="#">{{ Auth::user()->name }}</a>
+                        <ul class="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
 
-                </li>
-            </ul>
-        </div>
+                    </li>
+                </ul>
+            </div>
         @endguest
     </div>
 
@@ -72,10 +73,10 @@
             <div class="app-dashboard-sidebar-inner">
                 <ul class="menu vertical">
                     <li>
-                        <a href="/home" class="is-active" >
+                        <a href="/home" class="is-active">
                             <i class="fa fa-tachometer" aria-hidden="true"></i><span class="app-dashboard-sidebar-text">Dashboard</span>
                         </a></li>
-                    <li ><a href="#" class="is-active">
+                    <li><a href="/invoices" class="is-active">
                             <i class="fi-list-thumbnails medium"></i><span
                                     class="app-dashboard-sidebar-text">Invoices</span>
                         </a></li>

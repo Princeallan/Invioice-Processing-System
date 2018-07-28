@@ -16,12 +16,12 @@ class InvoicesController extends Controller
      */
     public function index()
     {
+            $invoices = Invoice::all();
+            $products = Product::all();
+            $clients = Client::all();
 
-        $products = Product::all();
-        $clients = Client::all();
-        $invoices = Invoice::all();
 
-        return view('invoices.index', compact('products', 'clients', 'invoices'));
+        return view('invoices.index', compact('products', 'invoices', 'clients'));
     }
 
     /**
@@ -77,7 +77,10 @@ class InvoicesController extends Controller
      */
     public function show($id)
     {
-        //
+        $invoice = Invoice::findOrFail($id)->first();
+        $product = Product::all();
+
+        return view('invoices.show', compact('invoice', 'product'));
     }
 
     /**
