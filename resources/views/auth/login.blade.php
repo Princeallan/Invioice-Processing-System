@@ -5,7 +5,10 @@
     <div class="row">
         <div class="grid-container">
             <div class="grid-x">
-                <div class="medium-offset-3 medium-5">
+                <div class=" medium-6">
+
+                </div>
+                <div class=" medium-6">
             <form class="login-form" method="POST" action="{{ route('login') }}">
 
                 {{ csrf_field() }}
@@ -13,7 +16,7 @@
                 <div class="email">
                     <label for="email">E-Mail Address</label>
 
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
+                    <input class="form-input" id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
 
                     @if ($errors->has('email'))
                         <span class="help-text" id="emailHelpText">
@@ -25,7 +28,7 @@
                 <div class="password">
                     <label for="password">Password</label>
 
-                    <input id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
+                    <input class="form-input" id="password" type="password" name="password" aria-describedby="passwordHelpText" required>
 
                     @if ($errors->has('password'))
                         <span class="help-text" id="passwordHelpText">
@@ -41,8 +44,8 @@
                 </div>
 
                 <div class="button-plus-link">
-                    <button type="submit" class="button">
-                        Login
+                    <button type="submit" class="button success">
+                        Sign In
                     </button>
 
                     <a href="{{ route('password.request') }}">

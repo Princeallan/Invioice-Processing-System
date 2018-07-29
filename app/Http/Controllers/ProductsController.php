@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+    protected $productrepository;
+
+    /**
+     * ProductsController constructor.
+     */
+    public function __construct(ProductRepository $productrepository)
+    {
+        $this->productrepository = $productrepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = $this->productrepository->getAll();
 
         return view('products.index', compact('products'));
     }
@@ -22,7 +34,7 @@ class ProductsController extends Controller
     function getProducts()
     {
 
-        $products = Product::all();
+        $products = $this->productrepository->getAll();
 
         return response()->json([
 
@@ -55,7 +67,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
 
-        $products = Product::create($request->all());
+        $products = $this->productrepository->save($request);
 
         return 'Saved';
 
@@ -69,7 +81,10 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->productrepository->getProductById($id);
+
+        return view('products.show', compact('product'));
+
     }
 
     /**
@@ -80,19 +95,26 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->productrepository->getProductById($id);
+
+        return view('products.edit', compact('product'));
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return void
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = $this->productrepository->getProductById($id);
+
+        $product->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -103,6 +125,10 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->productrepository->getProductById($id);
+
+        $product ->delete();
+
+        return redirect()->back()->with('success', 'Successfully Deleted');
     }
 }

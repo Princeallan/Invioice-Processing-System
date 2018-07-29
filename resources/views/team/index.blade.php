@@ -26,8 +26,11 @@
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <button type="submit" class="warning button"><i class="fa fa-edit"></i></button>
-                        <button type="submit" class="alert button"><i class="fa fa-trash-o"></i></button>
+                        <a href="{{ url('$users/'.$user->id.'/edit') }}" class="warning button"><i class="fa fa-edit"></i></a>
+                        {!!Form::open(['action'=>['HomeController@destroy', $user->id], 'method' => 'POST', 'class'=>'pull-right'])!!}
+                        {{Form::hidden('_method','DELETE')}}
+                        {{FORM::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'alert button'])}}
+                        {!!Form::close()!!}
                     </td>
                 </tr>
             @endforeach

@@ -3,6 +3,7 @@
 namespace App\Reports;
 
 use App\Invoice;
+use App\Product;
 use Jimmyjs\ReportGenerator\ReportMedia\PdfReport;
 
 class InvoiceReports
@@ -20,10 +21,13 @@ class InvoiceReports
             'Sort By' => ""
         ];
 
-        $invoices = Invoice::all();
+        $invoices = Product::with("invoice");
 
         $columns = [
             'Invoice no '=> 'invoice_no',
+            'Invoice No' => function ($result) {
+                return $result->product_id;
+            },
             'Due date '=> 'due_date',
             'Grand Total' => 'grand_total'
         ];

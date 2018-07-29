@@ -12897,6 +12897,15 @@ a.thumbnail image {
   margin-top: 150px;
 }
 
+.login-form .form-input {
+  width: 70%;
+  border-radius: 5px;
+}
+
+.login-form button {
+  border-radius: 10px;
+}
+
 .app-dashboard {
   height: 100vh;
   display: -webkit-box;

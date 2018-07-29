@@ -15,4 +15,14 @@ class Product extends Model
         'unit_price'
 
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    function invoice()
+    {
+
+        return $this->belongsTo(Invoice::class);
+
+    }
 }

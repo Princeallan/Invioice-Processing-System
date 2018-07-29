@@ -3,6 +3,16 @@ $app-dashboard-top-nav-height: 55px;
 
 .login-form {
   margin-top: 150px;
+
+  .form-input{
+    width: 70%;
+     border-radius: 5px;
+  }
+
+  button{
+    border-radius: 10px;
+  }
+
 }
 
 .app-dashboard {

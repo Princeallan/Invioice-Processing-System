@@ -15,13 +15,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-Route::get('/departments', 'DepartmentsController@index')->name('departments');
-
-Route::get('/products', 'ProductsController@index')->name('products');
-
-Route::resource('invoices', 'InvoicesController');
-
 Auth::routes();
 
 $this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
@@ -30,9 +23,17 @@ Route::get('/home', 'HomeController@index')->name('/home');
 
 Route::get('/users', 'HomeController@getUsers');
 
+Route::get('/users', 'HomeController@getUsers');
+
+Route::get('/users/destroy', 'HomeController@destroy');
+
 Route::resource('clients', 'ClientsController');
 
 Route::get('invoice/reports', 'InvoicesController@getReports');
 
+Route::get('/departments', 'DepartmentsController@index')->name('departments');
 
+Route::get('/products', 'ProductsController@index')->name('products');
+
+Route::resource('invoices', 'InvoicesController');
 
