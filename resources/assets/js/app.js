@@ -15,6 +15,8 @@ Vue.component('products', require('./components/Products/ProductList.vue'));
 
 Vue.component('createinvoice', require('./components/Invoices/CreateInvoice'));
 
+Vue.component('editinvoice', require('./components/Invoices'))
+
 // Vue.component('create', require('./components/Invoices/Create'));
 
 

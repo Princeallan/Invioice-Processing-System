@@ -95,11 +95,15 @@
                             <span class="app-dashboard-sidebar-text"> Departments </span>
                         </a></li>
                     <li>
-                        <a href="{{route('department/approvals')}}"><i class="fa fa-university"></i>
+                        <a href="{{route('department/approvals')}}"><i class="fa fa-dedent"></i>
                             <span class="app-dashboard-sidebar-text"> Depart Approvals </span>
                         </a></li>
                     <li>
-                        <a href="/invoice/reports"><i class="fa fa-university"></i>
+                        <a href="/finance"><i class="fa fa-money"></i>
+                            <span class="app-dashboard-sidebar-text"> Finance Approvals </span>
+                        </a></li>
+                    <li>
+                        <a href="/invoice/reports"><i class="fa fa-file-pdf-o"></i>
                             <span class="app-dashboard-sidebar-text"> Invoice Reports </span>
                         </a></li>
 

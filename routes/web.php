@@ -38,7 +38,10 @@ Route::get('invoice/reports', 'InvoicesController@getReports');
 
 Route::resource('invoices', 'InvoicesController');
 
+
 Route::get('/department/approvals', 'DepartmentapprovalsController@index')->name('department/approvals');
 
 Route::post('/toggle-approve', 'DepartmentapprovalsController@approvals');
+
+Route::get('/finance', 'FinanceController@index');
 
