@@ -29,11 +29,16 @@ Route::get('/users/destroy', 'HomeController@destroy');
 
 Route::resource('clients', 'ClientsController');
 
-Route::get('invoice/reports', 'InvoicesController@getReports');
-
 Route::get('/departments', 'DepartmentsController@index')->name('departments');
+
 
 Route::get('/products', 'ProductsController@index')->name('products');
 
+Route::get('invoice/reports', 'InvoicesController@getReports');
+
 Route::resource('invoices', 'InvoicesController');
+
+Route::get('/department/approvals', 'DepartmentapprovalsController@index')->name('department/approvals');
+
+Route::post('/toggle-approve', 'DepartmentapprovalsController@approvals');
 

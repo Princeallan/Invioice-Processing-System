@@ -62,24 +62,6 @@ class InvoicesController extends Controller
 
         $invoice = Invoice::create($request->all());
 
-//        $products = collect($request->products)->transform(function($product) {
-//            $product['total'] = $product['qty'] * $product['price'];
-//            return new ($product);
-//        });
-//
-//        if($products->isEmpty()) {
-//            echo "";
-//        }
-//
-//        $data = $request->except('products');
-//        $data['sub_total'] = $products->sum('total');
-//        $data['grand_total'] = $data['sub_total'] - $data['discount'];
-//
-//        $invoice = Invoice::create($data);
-//
-//        $invoice->products()->saveMany($products);
-//
-//        return 'saved';
     }
 
     /**

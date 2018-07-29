@@ -94,6 +94,14 @@
                         <a href="{{route('departments')}}"><i class="fa fa-university"></i>
                             <span class="app-dashboard-sidebar-text"> Departments </span>
                         </a></li>
+                    <li>
+                        <a href="{{route('department/approvals')}}"><i class="fa fa-university"></i>
+                            <span class="app-dashboard-sidebar-text"> Depart Approvals </span>
+                        </a></li>
+                    <li>
+                        <a href="/invoice/reports"><i class="fa fa-university"></i>
+                            <span class="app-dashboard-sidebar-text"> Invoice Reports </span>
+                        </a></li>
 
                 </ul>
             </div>
