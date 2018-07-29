@@ -30,7 +30,6 @@ class ClientsController extends Controller
 
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles('admin');
 
         $clients = $this->clientsrepository->getAll();
 
