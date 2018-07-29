@@ -24,11 +24,14 @@ class ClientsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
+
         $clients = $this->clientsrepository->getAll();
 
         return view('clients.index', compact('clients'));

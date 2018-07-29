@@ -5,10 +5,23 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Product;
 use App\Invoice;
+use App\Reports\InvoiceReports;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
 {
+    protected $invoicereport;
+
+    /**
+     * InvoicesController constructor.
+     * @param $invoicereport
+     */
+    public function __construct(InvoiceReports $invoicereport)
+    {
+        $this->invoicereport = $invoicereport;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -115,5 +128,10 @@ class InvoicesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getReports()
+    {
+        return $this->invoicereport->displayReport();
     }
 }

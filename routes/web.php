@@ -32,5 +32,7 @@ Route::get('/users', 'HomeController@getUsers');
 
 Route::resource('clients', 'ClientsController');
 
+Route::get('invoice/reports', 'InvoicesController@getReports');
+
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Notifications\UserRegisteredSuccessfully;
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
+
         try {
             $validatedData['password']        = bcrypt(array_get($validatedData, 'password'));
             $validatedData['activation_code'] = str_random(30).time();
@@ -64,6 +66,7 @@ class RegisterController extends Controller
             logger()->error($exception);
             return redirect()->back()->with('message', 'Unable to create new user.');
         }
+
         $user->notify(new UserRegisteredSuccessfully($user));
         return redirect()->back()->with('message', 'Successfully created a new account. Please check your email and activate your account.');
 
@@ -99,12 +102,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'status' => $data['status'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user
+            ->roles()
+            ->attach(Role::where('name', 'employee')->first());
+        return $user;
+
+
     }
 }
