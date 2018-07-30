@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.finance')
 
 @section('content')
 
@@ -7,6 +7,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>#</th>
                 <th>Inv No.</th>
                 <th>Client</th>
                 <th>Grand Total</th>
@@ -19,8 +20,9 @@
 
             @forelse($invoices as $invoice)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td><a href="{{ route('invoices.show', ['id' => $invoice->id]) }}">{{ $invoice->invoice_no }}</a></td>
-                    <td></td>
+                    <td>{{$invoice->client}}</td>
                     <td>${{ $invoice->grand_total }}</td>
                     <td>{{ $invoice->created_at->diffForHumans() }}</td>
                     <td>{{ $invoice->due_date }}</td>

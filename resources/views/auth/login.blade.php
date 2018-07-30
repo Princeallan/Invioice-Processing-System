@@ -14,7 +14,7 @@
                 {{ csrf_field() }}
 
                 <div class="email">
-                    <label for="email">E-Mail Address</label>
+                    <label for="email">Email:</label>
 
                     <input class="form-input" id="email" type="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelpText" required autofocus>
 

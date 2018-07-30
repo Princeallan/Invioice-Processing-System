@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.vendor')
 
 @section('content')
 
@@ -27,7 +27,7 @@
                 @foreach($invoices as $invoice)
                     <tr>
                         <td><a href="{{ route('invoices.show', ['id' => $invoice->id]) }}">{{ $invoice->invoice_no }}</a></td>
-                        <td></td>
+                        <td>{{ $invoice->client }}</td>
                         <td>${{ $invoice->grand_total }}</td>
                         <td>{{ $invoice->created_at->diffForHumans() }}</td>
                         <td>{{ $invoice->due_date }}</td>
