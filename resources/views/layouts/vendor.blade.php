@@ -74,7 +74,7 @@
                 <ul class="menu vertical">
                     <li>
                         <a href="/invoices" class="is-active">
-                            <i class="fa fa-tachometer" aria-hidden="true"></i><span class="app-dashboard-sidebar-text">Vendor</span>
+                            <i class="fa fa-tachometer" aria-hidden="true"></i><span class="app-dashboard-sidebar-text">Invoices</span>
                         </a></li>
 
                 </ul>

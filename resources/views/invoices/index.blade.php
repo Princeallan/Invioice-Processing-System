@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="clearfix">
-        <span class="panel-title">Invoices</span>
-        <a href="{{route('invoices.create')}}" class="btn btn-success pull-right">Create</a>
+        <h4 class="panel-title">Invoices</h4>
+        <a href="{{route('invoices.create')}}" class="button success pull-right">Create</a>
     </div>
 
     <div class="panel-body">
@@ -12,6 +12,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>#</th>
                 <th>Inv No.</th>
                 <th>Client</th>
                 <th>Grand Total</th>
@@ -26,6 +27,7 @@
 
                 @foreach($invoices as $invoice)
                     <tr>
+                        <td>{{$loop->iteration}}</td>
                         <td><a href="{{ route('invoices.show', ['id' => $invoice->id]) }}">{{ $invoice->invoice_no }}</a></td>
                         <td>{{ $invoice->client }}</td>
                         <td>${{ $invoice->grand_total }}</td>

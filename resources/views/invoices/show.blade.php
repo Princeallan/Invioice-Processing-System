@@ -43,47 +43,18 @@
 
             <tr class="heading">
                 <td>
-                    Payment Method
-                </td>
-
-                <td>
-                    Check #
-                </td>
-            </tr>
-
-            <tr class="details">
-                <td>
-                    Check
-                </td>
-
-                <td>
-                    1000
-                </td>
-            </tr>
-
-            <tr class="heading">
-                <td>
                     Item
                 </td>
 
+
                 <td>
-                    Price
+                    #Total
                 </td>
             </tr>
 
             <tr class="item">
                 <td>
-                    {{--{{$invoice->product->name}}--}}
-                </td>
-
-                <td>
-                    $300.00
-                </td>
-            </tr>
-
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
+                    office chair
                 </td>
 
                 <td>
@@ -91,21 +62,11 @@
                 </td>
             </tr>
 
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-
-                <td>
-                    $10.00
-                </td>
-            </tr>
-
             <tr class="total">
                 <td></td>
 
                 <td>
-                    Total: $385.00
+                  Grand  Total: $ {{ $invoice->grand_total }}
                 </td>
             </tr>
         </table>
