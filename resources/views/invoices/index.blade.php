@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td><a href="{{ route('invoices.show', ['id' => $invoice->id]) }}">{{ $invoice->invoice_no }}</a></td>
-                        <td>{{ $invoice->client }}</td>
+                        <td>{{ is_null( $invoice->client)?"":$invoice->client->name }}</td>
                         <td>${{ $invoice->grand_total }}</td>
                         <td>{{ $invoice->created_at->diffForHumans() }}</td>
                         <td>{{ $invoice->due_date }}</td>
