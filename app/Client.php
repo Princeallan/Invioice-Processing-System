@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'name',
         'address',

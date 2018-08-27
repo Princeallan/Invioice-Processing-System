@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
+    protected $primaryKey = 'id';
+
     protected $fillable= [
         'invoice_no',
         'due_date',
@@ -25,8 +27,9 @@ class Invoice extends Model
         return $this->hasMany(Product::class);
     }
 
+
     public function client()
     {
-        return $this->belongsTo(Client::class, ' client_id');
+        return $this->belongsTo(Client::class);
     }
 }

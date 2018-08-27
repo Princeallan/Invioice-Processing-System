@@ -5,12 +5,11 @@
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="2">
+                <td colspan="3">
                     <table>
                         <tr>
                             <td class="title">
                             </td>
-
                             <td>
                                 Invoice #: {{$invoice->invoice_no}}<br>
                                 Created: {{$invoice->created_at}}<br>
@@ -22,19 +21,19 @@
             </tr>
 
             <tr class="information">
-                <td colspan="2">
+                <td colspan="3">
                     <table>
                         <tr>
-                            <td>
-                                Sparksuite, Inc.<br>
-                                12345 Sunny Road<br>
-                                Sunnyville, CA 12345
-                            </td>
-
                             <td>
                                 Acme Corp.<br>
                                 John Doe<br>
                                 john@example.com
+                            </td>
+                            <td style="float: right;">
+                                {{$invoice->client->name}}<br>
+                                {{$invoice->client->phone_no}} <br>
+                                {{$invoice->client->city}} {{$invoice->client->postal_code}} <br>
+                                {{$invoice->client->country}}<br>
                             </td>
                         </tr>
                     </table>
@@ -45,28 +44,45 @@
                 <td>
                     Item
                 </td>
-
-
+                <td>
+                    Quantity
+                </td>
                 <td>
                     #Total
                 </td>
             </tr>
+            @forelse($invoice as $item)
+                <tr class="item">
+                    <td>
+                        {{--{{  $invoice->product->name }}--}}
+                        office chair
+                    </td>
+                    <td>{{ $invoice->quantity }}</td>
+                    <td>
+                        {{ $invoice->total }}
+                    </td>
+                </tr>
+                @empty
 
-            <tr class="item">
+            @endforelse
+
+            <tr class="total">
+                <td></td>
                 <td>
-                    office chair
+                    Discount: $
                 </td>
-
                 <td>
-                    $75.00
+                     {{ $invoice->discount }}
                 </td>
             </tr>
 
             <tr class="total">
                 <td></td>
-
                 <td>
-                  Grand  Total: $ {{ $invoice->grand_total }}
+                    Grand Total: $
+                </td>
+                <td>
+                     {{ $invoice->grand_total }}
                 </td>
             </tr>
         </table>

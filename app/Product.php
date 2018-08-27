@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
 
         'name',
@@ -16,13 +18,9 @@ class Product extends Model
 
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    function invoice()
+
+    public function invoice()
     {
-
         return $this->belongsTo(Invoice::class);
-
     }
 }

@@ -20,7 +20,7 @@
                 @forelse($invoices as $invoice)
                     <tr>
                         <td><a href="{{ route('invoices.show', ['id' => $invoice->id]) }}">{{ $invoice->invoice_no }}</a></td>
-                        <td></td>
+                        <td>{{$invoice->client->name}}</td>
                         <td>${{ $invoice->grand_total }}</td>
                         <td>{{ $invoice->created_at->diffForHumans() }}</td>
                         <td>{{ $invoice->due_date }}</td>
@@ -36,11 +36,9 @@
                         </td>
                     </tr>
                     @empty
-                    {!! $invoices->render() !!}
-
                     <div class="invoice-empty">
                         <p class="invoice-empty-title">
-                            No Invoices were created.
+                            No Invoices were created for approval.
                         </p>
                     </div>
 

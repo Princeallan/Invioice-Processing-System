@@ -21,15 +21,20 @@ class InvoiceReports
             'Sort By' => ""
         ];
 
-        $invoices = Product::with("invoice");
+        $invoices = Invoice::with('client', 'products');
 
         $columns = [
+
             'Invoice no '=> 'invoice_no',
-            'Invoice No' => function ($result) {
-                return $result->product_id;
+            'Client' => function ($invoices) {
+                return $invoices->client->name;
             },
-            'Due date '=> 'due_date',
-            'Grand Total' => 'grand_total'
+            'Product' => function ($invoices) {
+                return $invoices->products->name;
+            },
+            'Grand Total' => 'grand_total',
+            'Due date '=> 'due_date'
+
         ];
 
         return (new PdfReport)->of($title, $meta, $invoices, $columns)->setCss([

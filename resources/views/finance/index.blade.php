@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h3>Departmental Approvals</h3>
+    <h3>Invoices raised to Finance Approvals</h3>
     <div class="panel-body">
         <table class="table table-striped">
             <thead>
@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td><a href="{{ route('invoices.show', ['id' => $invoice->id]) }}">{{ $invoice->invoice_no }}</a></td>
-                    <td>{{$invoice->client}}</td>
+                    <td>{{$invoice->client->name}}</td>
                     <td>${{ $invoice->grand_total }}</td>
                     <td>{{ $invoice->created_at->diffForHumans() }}</td>
                     <td>{{ $invoice->due_date }}</td>
@@ -38,11 +38,10 @@
                     </td>
                 </tr>
             @empty
-                {!! $invoices->render() !!}
 
                 <div class="invoice-empty">
                     <p class="invoice-empty-title">
-                        No Invoices were created.
+                        No Invoices were raised.
                     </p>
                 </div>
 

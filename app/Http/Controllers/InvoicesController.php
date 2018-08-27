@@ -29,12 +29,12 @@ class InvoicesController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();//->get();
+        $invoices = Invoice::with('client')->get();//->get();
         $products = Product::all();
-        $clients = Client::all();
+//        $clients = Client::all();
 
 
-        return view('invoices.index', compact('products', 'invoices', 'clients'));
+        return view('invoices.index', compact('invoices', 'products'));
     }
 
     /**
@@ -73,17 +73,16 @@ class InvoicesController extends Controller
      */
     public function show($id)
     {
-        $invoice = Invoice::findOrFail($id)->first();
-        $product = Product::all();
+        $invoice = Invoice::findOrFail($id);
 
-        return view('invoices.show', compact('invoice', 'product'));
+        return view('invoices.show', compact('invoice'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function edit($id)
     {
@@ -95,7 +94,7 @@ class InvoicesController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function update(Request $request, $id)
     {
@@ -106,7 +105,7 @@ class InvoicesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function destroy($id)
     {
